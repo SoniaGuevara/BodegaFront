@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodega "Nombre" - Vinos Premium</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <!-- Age verification modal -->
+    <div class="age-verification" id="ageVerification">
+        <div class="age-modal">
+            <h2>Bienvenido a Bodega Nombre</h2>
+            <p>Para ingresar a nuestro sitio, por favor confirma que eres mayor de 18 años</p>
+            <div class="age-buttons">
+                <button class="age-btn yes" id="yesBtn">Sí, soy mayor de 18</button>
+                <button class="age-btn no" id="noBtn">No, soy menor de edad</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Underage message -->
+    <div class="age-verification underage-message" id="underageMessage">
+        <div class="age-modal">
+            <h2>Acceso denegado</h2>
+            <p>Lo sentimos, no podés ingresar a este sitio.</p>
+            <p>El consumo de alcohol está prohibido para menores de 18 años.</p>
+        </div>
+    </div>
+
+    <!-- Main content (hidden until age verification) -->
+    <div id="mainContent" style="display: none;">
+        <!-- Header -->
+        <header>
+            <div class="header-container">
+                <a href="#" class="logo">Bodega<span>Nombre</span></a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#registro">Registro</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="cart-icon" id="cartIcon">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero section -->
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <h1>Descubre nuestros vinos exclusivos</h1>
+                <p>Selección premium de los mejores viñedos nacionales e internacionales</p>
+                <a href="#productos" class="btn">Explorar vinos</a>
+            </div>
+        </section>
+
+        <!-- Productos -->
+        <section class="products" id="productos">
+            <h2 class="section-title">Nuestros Vinos</h2>
+            
+            <div class="product-grid" id="productGrid">
+                <!-- Productos se cargarán dinámicamente con JavaScript -->
+            </div>
+        </section>
+
+        <!-- Registro/Login -->
+        <section class="form-section" id="registro">
+            <div class="form-container">
+                <h2 class="form-title">Regístrate</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" class="form-control" required minlength="6">
+                    </div>
+                    <button type="submit" class="form-btn">Crear cuenta</button>
+                    <div class="form-footer">
+                        <p>¿Ya tienes una cuenta? <a href="#" id="loginLink">Inicia sesión</a></p>
+                    </div>
+                </form>
+
+                <form id="loginForm" style="display: none;">
+                    <h2 class="form-title">Iniciar sesión</h2>
+                    <div class="form-group">
+                        <label for="loginEmail">Correo electrónico</label>
+                        <input type="email" id="loginEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Contraseña</label>
+                        <input type="password" id="loginPassword" class="form-control" required>
+                    </div>
+                    <button type="submit" class="form-btn">Ingresar</button>
+                    <div class="form-footer">
+                        <p>¿No tienes una cuenta? <a href="#" id="registerLink">Regístrate</a></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section class="form-section" id="contacto">
+            <div class="form-container">
+                <h2 class="form-title">Contacto</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="contactName">Nombre</label>
+                        <input type="text" id="contactName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Correo electrónico</label>
+                        <input type="email" id="contactEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Mensaje</label>
+                        <textarea id="contactMessage" class="form-control" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="form-btn">Enviar mensaje</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">Bodega<span>Nombre</span></div>
+                    <p>Especialistas en vinos premium desde 1995. Seleccionamos cuidadosamente los mejores vinos para los paladares más exigentes.</p>
+                    <div class="footer-social">
+                        <div class="social-icon">f</div>
+                        <div class="social-icon">in</div>
+                        <div class="social-icon">ig</div>
+                        <div class="social-icon">tw</div>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">Enlaces</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#registro">Registro</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3 class="footer-title">Contacto</h3>
+                    <p><i>📍</i> Av.******, Mendoza, Argentina</p>
+                    <p><i>📞</i> ************</p>
+                    <p><i>✉️</i> contacto@bodega.ar</p>
+                    <p><i>⏱️</i> Lunes a Viernes: 9:00 - 19:00</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 Bodega nombre. Todos los derechos reservados.</p>
+                <p>El consumo de alcohol en exceso es perjudicial para la salud. Prohibida su venta a menores de 18 años.</p>
+            </div>
+        </footer>
+
+        <!-- Back to top button -->
+        <div class="back-to-top" id="backToTop">↑</div>
+
+        <!-- Cart modal -->
+        <div class="cart-modal" id="cartModal">
+            <div class="cart-header">
+                <h3 class="cart-title">Tu Carrito</h3>
+                <button class="close-cart" id="closeCart">×</button>
+            </div>
+            
+            <div class="cart-items" id="cartItems">
+                <!-- Los items del carrito se cargarán dinámicamente -->
+                <div class="empty-cart">Tu carrito está vacío</div>
+            </div>
+            
+            <div class="cart-total" id="cartTotal">Total: $0</div>
+            <button class="checkout-btn" id="checkoutBtn">Finalizar Compra</button>
+        </div>
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
+    </div>
+
+    <script>
+        // Age verification
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar si ya se confirmó la edad
+            if (localStorage.getItem('ageVerified') === 'true') {
+                document.getElementById('ageVerification').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+                return;
+            }
+
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            const ageVerification = document.getElementById('ageVerification');
+            const underageMessage = document.getElementById('underageMessage');
+            const mainContent = document.getElementById('mainContent');
+
+            yesBtn.addEventListener('click', function() {
+                localStorage.setItem('ageVerified', 'true');
+                ageVerification.style.display = 'none';
+                mainContent.style.display = 'block';
+            });
+
+            noBtn.addEventListener('click', function() {
+                ageVerification.style.display = 'none';
+                underageMessage.style.display = 'flex';
+            });
+        });
+
+        // Product data
+        const products = [
+            {
+                id: 1,
+                title: "Malbec Reserva",
+                description: "Vino tinto con cuerpo, notas de frutos negros y especias. Ideal para carnes rojas.",
+                price: 18990,
+                image: "🍷"
+            },
+            {
+                id: 2,
+                title: "Chardonnay Barrel",
+                description: "Vino blanco fermentado en barrica, con notas de vainilla y frutas tropicales.",
+                price: 15990,
+                image: "🥂"
+            },
+            {
+                id: 3,
+                title: "Carmenere Gran Reserva",
+                description: "Vino tinto complejo con notas de pimiento verde, chocolate y tabaco.",
+                price: 22990,
+                image: "🍇"
+            },
+            {
+                id: 4,
+                title: "Sauvignon Blanc",
+                description: "Vino blanco fresco y vibrante con notas cítricas y minerales.",
+                price: 12990,
+                image: "🍾"
+            },
+            {
+                id: 5,
+                title: "Pinot Noir",
+                description: "Vino tinto elegante con notas de frutos rojos y hongos silvestres.",
+                price: 24990,
+                image: "🍷"
+            },
+            {
+                id: 6,
+                title: "Syrah",
+                description: "Vino tinto intenso con notas de pimienta negra y frutos oscuros.",
+                price: 19990,
+                image: "🍇"
+            }
+        ];
+
+        // Cart functionality
+        let cart = [];
+        let isLoggedIn = false;
+
+        // Load products
+        document.addEventListener('DOMContentLoaded', function() {
+            const productGrid = document.getElementById('productGrid');
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image">${product.image}</div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-price">$${product.price.toLocaleString('es-CL')}</p>
+                        <p class="product-description">${product.description}</p>
+                        <button class="add-to-cart" data-id="${product.id}">Agregar al carrito</button>
+                    </div>
+                `;
+                
+                productGrid.appendChild(productCard);
+            });
+
+            // Add to cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    if (!isLoggedIn) {
+                        alert('Debes iniciar sesión para agregar productos al carrito');
+                        document.getElementById('registro').scrollIntoView({ behavior: 'smooth' });
+                        return;
+                    }
+                    
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    const product = products.find(p => p.id === productId);
+                    
+                    // Check if product is already in cart
+                    const existingItem = cart.find(item => item.id === productId);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            id: product.id,
+                            title: product.title,
+                            price: product.price,
+                            image: product.image,
+                            quantity: 1
+                        });
+                    }
+                    
+                    updateCart();
+                    showCartNotification();
+                });
+            });
+
+            // Cart icon click
+            document.getElementById('cartIcon').addEventListener('click', function() {
+                if (!isLoggedIn) {
+                    alert('Debes iniciar sesión para ver el carrito');
+                    document.getElementById('registro').scrollIntoView({ behavior: 'smooth' });
+                    return;
+                }
+                
+                document.getElementById('cartModal').classList.add('open');
+                document.getElementById('overlay').classList.add('active');
+            });
+
+            // Close cart
+            document.getElementById('closeCart').addEventListener('click', function() {
+                document.getElementById('cartModal').classList.remove('open');
+                document.getElementById('overlay').classList.remove('active');
+            });
+
+            // Overlay click
+            document.getElementById('overlay').addEventListener('click', function() {
+                document.getElementById('cartModal').classList.remove('open');
+                this.classList.remove('active');
+            });
+
+            // Checkout button
+            document.getElementById('checkoutBtn').addEventListener('click', function() {
+                if (cart.length === 0) return;
+                
+                alert('Compra finalizada con éxito! Gracias por tu compra.');
+                cart = [];
+                updateCart();
+                document.getElementById('cartModal').classList.remove('open');
+                document.getElementById('overlay').classList.remove('active');
+            });
+
+            // Toggle between login and register forms
+            document.getElementById('loginLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('registerForm').style.display = 'none';
+                document.getElementById('loginForm').style.display = 'block';
+            });
+
+            document.getElementById('registerLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('registerForm').style.display = 'block';
+            });
+
+            // Register form submission
+            document.getElementById('registerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                // Simple validation
+                if (!name || !email || !password) {
+                    alert('Por favor completa todos los campos');
+                    return;
+                }
+                
+                if (!validateEmail(email)) {
+                    alert('Por favor ingresa un email válido');
+                    return;
+                }
+                
+                if (password.length < 6) {
+                    alert('La contraseña debe tener al menos 6 caracteres');
+                    return;
+                }
+                
+                // In a real app, you would send this to a server
+                localStorage.setItem('user', JSON.stringify({ name, email }));
+                isLoggedIn = true;
+                
+                alert(`Bienvenido ${name}! Tu cuenta ha sido creada con éxito.`);
+                this.reset();
+                
+                // Show login form after registration
+                document.getElementById('registerForm').style.display = 'none';
+                document.getElementById('loginForm').style.display = 'block';
+            });
+
+            // Login form submission
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                // Simple validation
+                if (!email || !password) {
+                    alert('Por favor completa todos los campos');
+                    return;
+                }
+                
+                // In a real app, you would verify credentials with a server
+                const user = JSON.parse(localStorage.getItem('user'));
+                
+                if (!user || user.email !== email) {
+                    alert('Email no registrado. Por favor regístrate primero.');
+                    document.getElementById('registerForm').style.display = 'block';
+                    document.getElementById('loginForm').style.display = 'none';
+                    return;
+                }
+                
+                // In a real app, you would verify the password
+                isLoggedIn = true;
+                alert(`Bienvenido de vuelta ${user.name}!`);
+                this.reset();
+            });
+
+            // Contact form submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('contactName').value;
+                const email = document.getElementById('contactEmail').value;
+                const message = document.getElementById('contactMessage').value;
+                
+                if (!name || !email || !message) {
+                    alert('Por favor completa todos los campos');
+                    return;
+                }
+                
+                if (!validateEmail(email)) {
+                    alert('Por favor ingresa un email válido');
+                    return;
+                }
+                
+                // In a real app, you would send this to a server
+                alert(`Gracias por tu mensaje, ${name}! Nos pondremos en contacto contigo pronto.`);
+                this.reset();
+            });
+
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                document.getElementById('mainNav').classList.toggle('open');
+                document.getElementById('overlay').classList.toggle('active');
+            });
+
+            // Overlay click for mobile menu
+            document.getElementById('overlay').addEventListener('click', function() {
+                document.getElementById('mainNav').classList.remove('open');
+                this.classList.remove('active');
+            });
+
+            // Back to top button
+            window.addEventListener('scroll', function() {
+                const backToTop = document.getElementById('backToTop');
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            document.getElementById('backToTop').addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Helper functions
+        function updateCart() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update cart items
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Tu carrito está vacío</div>';
+                cartTotal.textContent = 'Total: $0';
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image">${item.image}</div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-price">$${item.price.toLocaleString('es-CL')} x ${item.quantity}</div>
+                        <button class="cart-item-remove" data-id="${item.id}">Eliminar</button>
+                    </div>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            // Add remove item functionality
+            document.querySelectorAll('.cart-item-remove').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    const itemIndex = cart.findIndex(item => item.id === itemId);
+                    
+                    if (itemIndex !== -1) {
+                        if (cart[itemIndex].quantity > 1) {
+                            cart[itemIndex].quantity -= 1;
+                        } else {
+                            cart.splice(itemIndex, 1);
+                        }
+                        
+                        updateCart();
+                    }
+                });
+            });
+            
+            // Update total
+            cartTotal.textContent = `Total: $${total.toLocaleString('es-CL')}`;
+        }
+
+        function showCartNotification() {
+            const cartCount = document.getElementById('cartCount');
+            cartCount.style.transform = 'scale(1.5)';
+            
+            setTimeout(() => {
+                cartCount.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+    </script>
+</body>
+</html>
